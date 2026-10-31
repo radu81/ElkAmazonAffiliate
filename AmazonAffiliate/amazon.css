@@ -1,5 +1,0 @@
-a[href*="amazon"] {
-   background: url(../images/icons/amazon.svg) no-repeat;
-   padding-left: 15px;
-   background-position: 0 5px;
-}

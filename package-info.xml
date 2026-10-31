@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.elkarte.net/site/package-info">
+<package-info xmlns="http://www.elkarte.net/site/package-info" xmlns:elk="http://www.elkarte.net/">
+	<id>TE:AmazonAffiliate</id>
+	<name>AmazonAffiliate4ElkArte</name>
+	<version>2.0.0</version>
+	<type>addon</type>
+	<license><![CDATA[
+/**
+ * @author TE
+ * @license MPL 1.1 http://mozilla.org/MPL/1.1/
+ * @version 2.0.0
+ */
+	]]></license>
+
+	<!-- ===================== ElkArte 1.1.x ===================== -->
+	<install for="1.1 - 1.1.99">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="AmazonAffiliate.integration.php" destination="SUBSDIR" />
+		<require-file name="amazon.css" destination="THEMEDIR/css" />
+		<require-file name="languages/1.1/english/AmazonAffiliate.english.php" destination="LANGUAGEDIR/english" />
+		<require-file name="languages/1.1/italian/AmazonAffiliate.italian.php" destination="LANGUAGEDIR/italian" />
+		<hook hook="integrate_post_bbc_parser" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_post_bbc" />
+		<hook hook="integrate_preparse_tokenized_code" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_preparse" />
+		<hook hook="integrate_general_mod_settings" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_settings" />
+		<hook hook="integrate_load_theme" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_load_theme" />
+		<code type="file">install.php</code>
+		<redirect url="?action=admin;area=addonsettings;sa=general" timeout="3000" />
+	</install>
+
+	<!-- Upgrade from 1.0 (the old uninstall never matched 1.1, so its hooks may still be registered) -->
+	<upgrade from="1.0 - 1.0.99" for="1.1 - 1.1.99">
+		<hook reverse="true" hook="integrate_prepare_display_context" file="SUBSDIR/AmazonAffiliate.integration.php" function="add_amazon_affiliate" />
+		<hook reverse="true" hook="integrate_modify_post_settings" file="SUBSDIR/AmazonAffiliate.integration.php" function="add_amazon_affiliate_setting" />
+		<hook reverse="true" hook="integrate_load_theme" file="SUBSDIR/AmazonAffiliate.integration.php" function="add_amazon_css" />
+		<require-file name="AmazonAffiliate.integration.php" destination="SUBSDIR" />
+		<require-file name="amazon.css" destination="THEMEDIR/css" />
+		<require-file name="languages/1.1/english/AmazonAffiliate.english.php" destination="LANGUAGEDIR/english" />
+		<require-file name="languages/1.1/italian/AmazonAffiliate.italian.php" destination="LANGUAGEDIR/italian" />
+		<hook hook="integrate_post_bbc_parser" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_post_bbc" />
+		<hook hook="integrate_preparse_tokenized_code" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_preparse" />
+		<hook hook="integrate_general_mod_settings" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_settings" />
+		<hook hook="integrate_load_theme" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_load_theme" />
+		<code type="file">install.php</code>
+		<redirect url="?action=admin;area=addonsettings;sa=general" timeout="3000" />
+	</upgrade>
+
+	<uninstall for="1.1 - 1.1.99">
+		<hook reverse="true" hook="integrate_post_bbc_parser" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_post_bbc" />
+		<hook reverse="true" hook="integrate_preparse_tokenized_code" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_preparse" />
+		<hook reverse="true" hook="integrate_general_mod_settings" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_settings" />
+		<hook reverse="true" hook="integrate_load_theme" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_load_theme" />
+		<remove-file name="SUBSDIR/AmazonAffiliate.integration.php" />
+		<remove-file name="THEMEDIR/css/amazon.css" />
+		<remove-file name="LANGUAGEDIR/english/AmazonAffiliate.english.php" />
+		<remove-file name="LANGUAGEDIR/italian/AmazonAffiliate.italian.php" />
+	</uninstall>
+
+	<!-- ===================== ElkArte 2.0 ===================== -->
+	<install for="2.0 Beta 1 - 2.0.99">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="AmazonAffiliate.integration.php" destination="SUBSDIR" />
+		<require-file name="amazon.css" destination="THEMEDIR/css" />
+		<require-dir name="languages/2.0/AmazonAffiliate" destination="LANGUAGEDIR" />
+		<hook hook="integrate_post_bbc_parser" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_post_bbc" />
+		<hook hook="integrate_preparse_tokenized_code" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_preparse" />
+		<hook hook="integrate_general_mod_settings" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_settings" />
+		<hook hook="integrate_load_theme" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_load_theme" />
+		<code type="file">install.php</code>
+		<redirect url="?action=admin;area=addonsettings;sa=general" timeout="3000" />
+	</install>
+
+	<uninstall for="2.0 Beta 1 - 2.0.99">
+		<hook reverse="true" hook="integrate_post_bbc_parser" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_post_bbc" />
+		<hook reverse="true" hook="integrate_preparse_tokenized_code" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_preparse" />
+		<hook reverse="true" hook="integrate_general_mod_settings" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_settings" />
+		<hook reverse="true" hook="integrate_load_theme" file="SUBSDIR/AmazonAffiliate.integration.php" function="amazon_affiliate_load_theme" />
+		<remove-file name="SUBSDIR/AmazonAffiliate.integration.php" />
+		<remove-file name="THEMEDIR/css/amazon.css" />
+		<remove-dir name="LANGUAGEDIR/AmazonAffiliate" />
+	</uninstall>
+</package-info>
